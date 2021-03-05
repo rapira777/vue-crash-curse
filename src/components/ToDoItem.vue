@@ -4,7 +4,7 @@
             <input 
             type="checkbox" 
             v-on:change="todo.completed=!todo.completed">
-            <strong> {{ todo.id }}</strong>
+            <strong> {{ index +1}}</strong>
         
         {{ todo.title }}
         </span>
@@ -18,7 +18,8 @@ export default {
         todo: {
             type: Object,
             reuired: true,
-        }
+        },
+        index: Number
     }
 }
 </script>
