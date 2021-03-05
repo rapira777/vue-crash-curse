@@ -1,15 +1,20 @@
 <template>
  <div id="app">
    <h1>Ежедневник</h1>
+   <AddTodo @add-todo="addTodo"
+   />
    <hr>
    <ToDoList 
-      v-bind:todos="todos"  
+      v-bind:todos="todos" 
+      @remove-todo="removeTodo" 
+    
    />
    </div>
 </template>
 // https://www.youtube.com/watch?v=OlnwgS-gk8Y
 <script>
 import ToDoList from './components/ToDoList'
+import AddTodo from './components/AddTodo'
 
 export default {
   name: 'App',
@@ -22,9 +27,20 @@ export default {
       ]
     }
   },
+   methods: {
+    removeTodo(id) {
+      console.log('App - удаляю id = ',id);
+      this.todos = this.todos.filter(t=> t.id !== id)
+    },
+    
+    addTodo(todo) {
+      this.todos.push(todo)
+    },
+  },
   components: {
-    ToDoList
-  }
+    ToDoList,AddTodo
+  },
+ 
 }
 </script>
 
